@@ -23,6 +23,9 @@ $clientes = $query->fetchAll(PDO::FETCH_ASSOC);
             <td><?php echo htmlspecialchars($cliente['nombre']); ?></td>
             <td><?php echo htmlspecialchars($cliente['email']); ?></td>
             <td><?php echo htmlspecialchars($cliente['telefono']); ?></td>
+            <td>
+    <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a>
+</td>
         </tr>
         <?php endforeach; ?>
     </tbody>
