@@ -28,6 +28,7 @@ include 'includes/header.php';
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Estado</th>
+                    <th>Acciones</th> 
                 </tr>
             </thead>
             <tbody>
@@ -38,10 +39,13 @@ include 'includes/header.php';
                             <td><?php echo htmlspecialchars($reserva['fecha_reserva']); ?></td>
                             <td><?php echo htmlspecialchars($reserva['hora_reserva']); ?></td>
                             <td><span class="badge bg-info"><?php echo $reserva['estado']; ?></span></td>
+                            <td>
+                                <a href="editar_reserva.php?id=<?php echo $reserva['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="4" class="text-center">No hay reservas registradas aún.</td></tr>
+                    <tr><td colspan="5" class="text-center">No hay reservas registradas aún.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
