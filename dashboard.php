@@ -51,7 +51,7 @@ include 'includes/header.php';
                     <div class="card-body">
                         <h5 class="card-title">Clientes</h5>
                         <p class="card-text">Ver catálogo de clientes registrados.</p>
-                        <a href="#" class="btn btn-light">Ver Clientes</a>
+                        <a href="lista_clientes.php" class="btn btn-info">Ver Clientes</a>
                     </div>
                 </div>
             </div>
