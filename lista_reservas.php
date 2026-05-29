@@ -40,8 +40,16 @@ include 'includes/header.php';
                             <td><?php echo htmlspecialchars($reserva['hora_reserva']); ?></td>
                             <td><span class="badge bg-info"><?php echo $reserva['estado']; ?></span></td>
                             <td>
-                                <a href="editar_reserva.php?id=<?php echo $reserva['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
-                            </td>
+                                <td>
+    <a href="editar_reserva.php?id=<?php echo $reserva['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
+    
+    <a href="eliminar_reserva.php?id=<?php echo $reserva['id']; ?>" 
+       class="btn btn-sm btn-danger" 
+       onclick="return confirm('¿Estás seguro de eliminar esta reserva? Esta acción no se puede deshacer.');">
+       Eliminar
+    </a>
+</td>
+                            
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
