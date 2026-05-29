@@ -27,7 +27,15 @@ include 'includes/header.php';
         <div class="alert alert-info">
             Bienvenido, <strong><?php echo htmlspecialchars($user['nombre_usuario']); ?></strong>. ¡Qué bueno verte de nuevo!
         </div>
-
+<div class="col-md-4">
+    <div class="card text-white bg-warning mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Nueva Reserva</h5>
+            <p class="card-text">Agendar un nuevo cliente.</p>
+            <a href="crear_reserva.php" class="btn btn-light">Crear Reserva</a>
+        </div>
+    </div>
+</div>
         <div class="row">
             <div class="col-md-4">
                 <div class="card text-white bg-primary mb-3">
