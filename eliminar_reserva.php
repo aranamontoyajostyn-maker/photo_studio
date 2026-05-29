@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
 require_once 'config/conexion.php';
 
 if (isset($_GET['id'])) {

@@ -1,6 +1,10 @@
 <?php
 require_once 'config/conexion.php';
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario_input = $_POST['usuario'];
@@ -12,13 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // CAMBIO: Comparación simple sin encriptación
-    if ($user && $password_input == $user['password']) {
-        $_SESSION['user_id'] = $user['id'];
-        header("Location: dashboard.php");
-        exit();
+    if ($user && password_verify($password_input, $user['password'])) {
+    session_regenerate_id(true); // Evita ataques de fijación de sesión
+    $_SESSION['user_id'] = $user['id'];
+    header("Location: dashboard.php");
+    exit();
+}
     } else {
         echo "Error: Usuario no encontrado o contraseña incorrecta.";
         echo "<br><a href='index.php'>Volver</a>";
     }
-}
+
 ?>

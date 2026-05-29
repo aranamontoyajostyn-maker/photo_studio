@@ -8,7 +8,11 @@ if (!isset($_SESSION['user_id'])) {
 require_once 'config/conexion.php';
 
 // Consultar todas las reservas
-$query = $conexion->query("SELECT * FROM reservas ORDER BY fecha_reserva ASC");
+$sql = "SELECT reservas.*, clientes.nombre AS nombre_cliente 
+        FROM reservas 
+        JOIN clientes ON reservas.cliente_id = clientes.id 
+        ORDER BY reservas.fecha_reserva ASC";
+$query = $conexion->query($sql);
 $reservas = $query->fetchAll(PDO::FETCH_ASSOC);
 
 include 'includes/header.php';
@@ -35,12 +39,12 @@ include 'includes/header.php';
                 <?php if (count($reservas) > 0): ?>
                     <?php foreach ($reservas as $reserva): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($reserva['cliente_nombre']); ?></td>
+                            <td><?php echo htmlspecialchars($reserva['nombre_cliente']); ?></td>
                             <td><?php echo htmlspecialchars($reserva['fecha_reserva']); ?></td>
                             <td><?php echo htmlspecialchars($reserva['hora_reserva']); ?></td>
                             <td><span class="badge bg-info"><?php echo $reserva['estado']; ?></span></td>
                             <td>
-                                <td>
+                            
     <a href="editar_reserva.php?id=<?php echo $reserva['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
     
     <a href="eliminar_reserva.php?id=<?php echo $reserva['id']; ?>" 
