@@ -34,7 +34,7 @@ include 'includes/header.php';
                     <div class="card-body">
                         <h5 class="card-title">Reservas</h5>
                         <p class="card-text">Gestionar las citas de fotografía.</p>
-                        <a href="#" class="btn btn-light">Ver Reservas</a>
+                       <a href="lista_reservas.php" class="btn btn-light">Ver Reservas</a>
                     </div>
                 </div>
             </div>
