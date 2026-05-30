@@ -1,0 +1,3 @@
+# Archivos del sistema que no son de código
+.DS_Store
+Thumbs.db

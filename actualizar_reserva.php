@@ -1,5 +1,11 @@
 <?php
 session_start();
+// --- SEGURIDAD: Solo acceso para administradores ---
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    // Si no es admin, lo sacamos de aquí y lo mandamos a la vista de cliente
+    header("Location: mis_reservas.php");
+    exit();
+}
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
